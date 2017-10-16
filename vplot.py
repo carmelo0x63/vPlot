@@ -13,19 +13,20 @@ __version__ = 1.1
 __build__ = 171016
 
 '''
-inList will contain CLI arguments, except for index=0, map-ped to their 'int' values
+inOri contains the CLI arguments as a list of strings, inListNum will contain the input,
+except for index=0 (which is the script's name), map-ped to their numerical values
 rows is used to span the graph's heigth while cols is the number of data points
 '''
 inOri = sys.argv[1:]
-inList = map(float, inOri)
-rows = max(inList) # 'rows' is a float
-cols = len(inList)
+inListNum = map(float, inOri)
+rows = max(inListNum) # 'rows' is a float
+cols = len(inListNum)
 # the maximum value converted to a string will be used as a reference for spacing
 spacer = len(str(rows)) - 2
 # scaling, initial version
 if rows < 1:
   rows = rows * 10
-  inList[:] = [x * 10 for x in inList]
+  inListNum[:] = [x * 10 for x in inListNum]
   spacer += 1
 rows = int(rows) # 'rows' is converted to int
 
@@ -33,10 +34,10 @@ rows = int(rows) # 'rows' is converted to int
 L1 will contain a temporary output array-of-arrays, initially containing strings made of blank spaces
 its length equals the number of rows while its elements' lengths equal the number of data points
 L2 instead will contain the input transformed into 2-tuples in the traditional
-cartesian format, (x, y) where y's are taken from inList
+cartesian format, (x, y) where y's are taken from inListNum
 '''
 L1 = [[' ' * (spacer + 1) for i in range(cols)] for j in range(rows)]
-L2 = [ i for i in enumerate(inList) ]
+L2 = [ i for i in enumerate(inListNum) ]
 
 '''
 Here we `scan` the output from top to down, if for each of L2 elements one of them
