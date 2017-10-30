@@ -39,7 +39,7 @@ cartesian format, (x, y) where y's are taken from inListNum
 L1 = [[' ' * (spacer + 1) for i in range(cols)] for j in range(rows)]
 L2 = [ i for i in enumerate(inListNum) ]
 
-print("datapoints: " + str(cols) + "\tnormalized range: " + str(int(min(inListNum))) + "-" + str(rows))
+print("datapoints: " + str(cols) + "\trange: " + str(int(min(inListNum))) + "-" + str(rows))
 
 '''
 Here we `scan` the output from top to down, if for each of L2 elements one of them
